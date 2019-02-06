@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemweb"
+        android:title="WEB ver index.html" />
+    <item android:title="Editar Codigo">
+        <menu >
+            <item
+                android:id="@+id/itemhtml"
+                android:title="index.html" />
+            <item
+                android:id="@+id/itemestilos"
+                android:title="estilos.css" />
+            <item
+                android:id="@+id/itemform"
+                android:title="form.js" />
+            <item
+                android:id="@+id/itemphp"
+                android:title="document.php" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/itemacerca"
+        android:title="Acerca De" />
+    <item
+        android:id="@+id/itemayuda"
+        android:title="Ayuda" />
+</menu>

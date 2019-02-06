@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Desarrollo Web</string>
+    <string name="item1">index.html</string>
+    <string name="item2">opcion2</string>
+    <string name="item3">opcion3</string>
+    <string name="btn1"><![CDATA[<]]></string>
+    <string name="btn2"><![CDATA[>]]></string>
+
+</resources>
+
