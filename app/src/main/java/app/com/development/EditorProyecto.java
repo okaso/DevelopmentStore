@@ -35,43 +35,17 @@ public class EditorProyecto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor_proyecto);
         hilo = new Metodo();
-        MobileAds.initialize(this,"ca-app-pub-9234222684473855~9343784971");
-
-        mInterstitialAd = new InterstitialAd( this );
-        mInterstitialAd . setAdUnitId ( "ca-app-pub-9234222684473855/2339392920" );
-        //time();
-        mInterstitialAd.loadAd(new AdRequest.Builder ().build ());
-        hilo.run();
-        mInterstitialAd.setAdListener ( new AdListener(){
-            @Override public void onAdLoaded () {
-                //mInterstitialAd.show();
-
-                // Código que se ejecutará cuando un anuncio termine de cargarse.
-            }@Override public void onAdFailedToLoad ( int errorCode ) {
-                // Código que se ejecutará cuando falle una solicitud de anuncio.
-            }@Override public void onAdOpened () {
-                // Código que se ejecutará cuando se muestre el anuncio.
-            }@Override public void onAdLeftApplication   () {
-                // Código que se ejecutará cuando el usuario haya abandonado la aplicación.
-            }@Override public void onAdClosed () {
-
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-
-                // Código que se ejecutará cuando se cierre el anuncio intersticial.
-            } });
         et1 = (TextView) findViewById(R.id.textoNombre);
         et2 = (EditText) findViewById(R.id.texto1);
         tv2 = (TextView) findViewById(R.id.textoNombre2);
         tv2.setText(getIntent().getStringExtra("carpeta"));
+        String archivo=getIntent().getStringExtra("Url");
 
 
-        recuperar("index.html", tv2.getText().toString());
+        recuperar(archivo);
 
 
     }
-
-
-
 
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.ventanas,menu);
@@ -83,64 +57,14 @@ public class EditorProyecto extends AppCompatActivity {
         Intent intent= null;
         String carpeta1= tv2.getText().toString();
 
-        if(id == R.id.itemhtml) {
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-                //Toast.makeText(this,"no cargo",Toast.LENGTH_SHORT).show();
-            }
-            String carpeta= tv2.getText().toString();
-            String html = "index.html";
-            guardar();
-            //Toast.makeText(this,"opcion1",Toast.LENGTH_LONG).show();
-            recuperar(html,carpeta);
-
-        }if(id== R.id.itemestilos){
-            String carpeta= tv2.getText().toString();
-            String css = "estilos.css";
-            guardar();
-            recuperar(css,carpeta);
-        }if(id== R.id.itemform){
-            String carpeta= tv2.getText().toString();
-            String js = "form.js";
-            guardar();
-            recuperar(js,carpeta);
-
-        }if(id== R.id.itemphp){
-            if (mInterstitialAd.isLoaded()) {
-                mInterstitialAd.show();
-            } else {
-                Log.d("TAG", "The interstitial wasn't loaded yet.");
-                //Toast.makeText(this,"no cargo",Toast.LENGTH_SHORT).show();
-            }
-            String carpeta= tv2.getText().toString();
-            String js = "document.php";
-            guardar();
-            recuperar(js,carpeta);
-
-        }if(id== R.id.itemacerca){
-            guardar();
-            intent = new Intent(EditorProyecto.this, AcercaDe.class);
-
-        }if(id==R.id.itemweb){
+        if(id==R.id.itemweb){
             hilo.run();
             mInterstitialAd.show();
 
             guardar();
             intent = new Intent(EditorProyecto.this, WEB.class);
             intent.putExtra("Url","DesarrolloWEB/"+carpeta1);
-
-        }if(id==R.id.itemayuda){
-            hilo.run();
-            mInterstitialAd.show();
-
-
-            intent = new Intent(EditorProyecto.this, AyudaUsuario.class);
-
-
         }
-
 
         if(intent!=null){
             startActivity(intent);
@@ -203,11 +127,11 @@ public class EditorProyecto extends AppCompatActivity {
     }
 
 
-    public void recuperar(String nomarchivo,String carpeta) {
+    public void recuperar(String nomarchivo) {
         //String nomarchivo = et1.getText().toString();
         et1.setText(nomarchivo);
         File tarjeta = Environment.getExternalStorageDirectory();
-        File file = new File(tarjeta.getAbsolutePath()+"/DesarrolloWEB/"+carpeta, nomarchivo);
+        File file = new File(nomarchivo);
         try {
             FileInputStream fIn = new FileInputStream(file);
             InputStreamReader archivo = new InputStreamReader(fIn);

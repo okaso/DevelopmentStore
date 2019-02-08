@@ -24,12 +24,15 @@
             android:name=".EditorProyecto"
             android:color="#123456"
             android:label="../" />
-        <activity android:name=".WEB"
-            android:label="index.html"/>
-        <activity android:name=".AcercaDe"
-            android:label="Datos"/>
-        <activity android:name=".AyudaUsuario"
-            android:label="Ayuda al Usuario"></activity>
+        <activity
+            android:name=".WEB"
+            android:label="index.html" />
+        <activity
+            android:name=".AcercaDe"
+            android:label="Datos" />
+        <activity
+            android:name=".AyudaUsuario"
+            android:label="Ayuda al Usuario" />
     </application>
 
 </manifest>
