@@ -37,13 +37,11 @@ public class EditorProyecto extends AppCompatActivity {
         hilo = new Metodo();
         et1 = (TextView) findViewById(R.id.textoNombre);
         et2 = (EditText) findViewById(R.id.texto1);
-        tv2 = (TextView) findViewById(R.id.textoNombre2);
-        tv2.setText(getIntent().getStringExtra("carpeta"));
         String archivo=getIntent().getStringExtra("Url");
 
 
         recuperar(archivo);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
@@ -55,20 +53,19 @@ public class EditorProyecto extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         int id= item.getItemId();
         Intent intent= null;
-        String carpeta1= tv2.getText().toString();
+        //String carpeta1= tv2.getText().toString();
 
         if(id==R.id.itemweb){
-            hilo.run();
-            mInterstitialAd.show();
-
             guardar();
             intent = new Intent(EditorProyecto.this, WEB.class);
-            intent.putExtra("Url","DesarrolloWEB/"+carpeta1);
+            intent.putExtra("Url",getTitle().toString());
+        }
+        if(id==R.id.Guardar){
+
         }
 
         if(intent!=null){
             startActivity(intent);
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -78,7 +75,7 @@ public class EditorProyecto extends AppCompatActivity {
         String contenido = et2.getText().toString();
         try {
             File tarjeta = Environment.getExternalStorageDirectory();
-//            Toast.makeText(this,tarjeta.getAbsolutePath(),Toast.LENGTH_LONG).show();
+            String url = getTitle().toString();
             //creacion de nueva carpeta en memoria interna del celular
             File file1 = new File(tarjeta.getAbsolutePath()+"/DesarrolloWEB/"+tv2.getText().toString());
 

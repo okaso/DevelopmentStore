@@ -23,16 +23,21 @@
         <activity
             android:name=".EditorProyecto"
             android:color="#123456"
-            android:label="../" />
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+                ></meta-data>
+        </activity>
         <activity
             android:name=".WEB"
-            android:label="index.html" />
-        <activity
-            android:name=".AcercaDe"
-            android:label="Datos" />
-        <activity
-            android:name=".AyudaUsuario"
-            android:label="Ayuda al Usuario" />
+            android:parentActivityName=".EditorProyecto">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".EditorProyecto"
+            ></meta-data>
+        </activity>
+
     </application>
 
 </manifest>

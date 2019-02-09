@@ -15,6 +15,7 @@ public class WEB extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String sd=getIntent().getStringExtra("Url");
         web=(WebView)findViewById(R.id.webView);
 
