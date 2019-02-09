@@ -30,6 +30,8 @@ public class EditorProyecto extends AppCompatActivity {
     private TextView et1, tv2;
     private InterstitialAd mInterstitialAd;
     private Metodo hilo;
+    String Direccion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,10 @@ public class EditorProyecto extends AppCompatActivity {
         et1 = (TextView) findViewById(R.id.textoNombre);
         et2 = (EditText) findViewById(R.id.texto1);
         String archivo=getIntent().getStringExtra("Url");
-
+        String Nombre= getIntent().getStringExtra("nombre");
+        Direccion= getIntent().getStringExtra("Carpeta");
+        setTitle(Nombre);
+        et1.setText(archivo);
 
         recuperar(archivo);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -58,10 +63,10 @@ public class EditorProyecto extends AppCompatActivity {
         if(id==R.id.itemweb){
             guardar();
             intent = new Intent(EditorProyecto.this, WEB.class);
-            intent.putExtra("Url",getTitle().toString());
+            intent.putExtra("Url",et1.getText());
         }
         if(id==R.id.Guardar){
-
+            guardar();
         }
 
         if(intent!=null){
@@ -77,9 +82,9 @@ public class EditorProyecto extends AppCompatActivity {
             File tarjeta = Environment.getExternalStorageDirectory();
             String url = getTitle().toString();
             //creacion de nueva carpeta en memoria interna del celular
-            File file1 = new File(tarjeta.getAbsolutePath()+"/DesarrolloWEB/"+tv2.getText().toString());
+            File file1 = new File(Direccion);
 
-            File file = new File(file1,nomarchivo);
+            File file = new File(file1,getTitle().toString());
 
             OutputStreamWriter osw = new OutputStreamWriter(
                     new FileOutputStream(file));

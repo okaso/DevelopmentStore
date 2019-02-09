@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
     final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1 ;
     String conte="";
-    private InterstitialAd mInterstitialAd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -106,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
                     //iniciar(dato,archivo.getName(),carpetaActual.getText().toString());
                      intent = new Intent(MainActivity.this, EditorProyecto.class);
                     intent.putExtra("Url",listaRutasArchivos.get(position));
+                    intent.putExtra("nombre",listaNombresArchivos.get(position));
+                    intent.putExtra("Carpeta",getTitle().toString());
                     if(intent!=null){
                         startActivity(intent);
                     }

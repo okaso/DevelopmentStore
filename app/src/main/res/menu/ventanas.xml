@@ -6,7 +6,7 @@
         android:id="@+id/Guardar"
         app:showAsAction="always"
         android:title="New Page"
-        android:icon="@drawable/save"
+        android:icon="@drawable/save2"
         />
 
     <item

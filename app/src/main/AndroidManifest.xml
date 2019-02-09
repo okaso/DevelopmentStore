@@ -30,13 +30,7 @@
                 ></meta-data>
         </activity>
         <activity
-            android:name=".WEB"
-            android:parentActivityName=".EditorProyecto">
-            <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value=".EditorProyecto"
-            ></meta-data>
-        </activity>
+            android:name=".WEB" />
 
     </application>
 
